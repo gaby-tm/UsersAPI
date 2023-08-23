@@ -33,5 +33,14 @@ public class UserService {
 		return tmpUser;
 	} // crearUsuario
 	
+	public User deleteUser (User user) {
+		User userTmp = null;
+		if (userRepository.existsById(user.getLogin())) {
+			userTmp = userRepository.findById(user.getLogin()).get();
+			userRepository.deleteById(user.getLogin());
+			}//if
+		return userTmp;
+	}//deleteUsuario
+	
 	
 } // class UserService
